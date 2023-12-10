@@ -147,3 +147,4 @@ window = MyApp()
 img = EditImages(window.get_dpi())
 window.show()
 app.exec()
+a
