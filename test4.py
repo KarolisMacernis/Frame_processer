@@ -7,6 +7,15 @@ from PyQt6.QtWidgets import QApplication, QWidget, QLineEdit, QPushButton, QText
 from PyQt6.QtWidgets import QFileDialog, QLabel, QSizePolicy, QFormLayout, QComboBox, QMainWindow
 import PyQt6.QtWidgets as qtw
 
+class EditImages:
+    def __init__(self, dpi):
+        self.dpi = dpi
+
+    def adjust_dpi(self):
+        print(self.dpi)
+
+img = EditImages(300)
+
 class MyApp(QWidget):
 
     def __init__(self):
@@ -24,13 +33,10 @@ class MyApp(QWidget):
         self.btn_dir.setMinimumSize(270, 47)
         self.btn_dir.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
 
-        # btn_dir.setStyleSheet('QPushButton {font: bold 14px; color: darkgrey;}')
-
         # Create an output label that will show the chosen directory once the user has selected it.
         self.output_label = QLabel('Selected path:   None')
         self.layout.addWidget(self.output_label)
         self.output_label.setMinimumHeight(50)
-        # self.output_label.setMaximumHeight(80)
         self.output_label.setWordWrap(True)
         self.output_label.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
 
@@ -135,15 +141,7 @@ class MyApp(QWidget):
         """Enable the Process button."""
         self.btn_process.setDisabled(False)
 
-class EditImages:
-    def __init__(self, dpi):
-        self.dpi = dpi
-
-    def adjust_dpi(self):
-        print(self.dpi)
-
 app = QApplication([])
 window = MyApp()
-img = EditImages(window.get_dpi())
 window.show()
 app.exec()
